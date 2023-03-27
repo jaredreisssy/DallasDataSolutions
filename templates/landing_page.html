@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="jumbotron bg-dark text-white">
+  <div class="container">
+    <h1 class="display-4">Welcome to Dallas Data Solutions</h1>
+    <p class="lead">Revolutionizing Data Management and Analytics for Businesses</p>
+    <hr class="my-4">
+    <p class="lead">We provide advanced data solutions that empower your business to make data-driven decisions and gain a competitive edge.</p>
+    <p class="text-center mt-4">
+      <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg">Get Started</a>
+    </p>
+  </div>
+</section>
+
+<section class="container-fluid mt-5 mb-5">
+  <div class="row">
+    <div class="col-lg-6 order-lg-2 mb-5">
+      <img class="img-fluid" src="{% static 'images/data-analytics.jpg' %}" alt="Data Analytics">
+    </div>
+    <div class="col-lg-6 order-lg-1 my-auto">
+      <h2 class="text-white mb-4">Expert Data Science Solutions for Your Business</h2>
+      <p class="lead mb-5">Our team of data experts provides end-to-end solutions for your data management and analytics needs. We help you capture, store, process, and analyze your data to uncover insights and drive business growth.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 mb-5">
+      <h2 class="text-white mb-4">Advanced Analytics and AI Services</h2>
+      <p class="lead mb-5">Our analytics and AI services help you harness the power of data to gain a competitive advantage. We offer predictive modeling, machine learning, and deep learning services to help you make better decisions and optimize your business processes.</p>
+    </div>
+    <div class="col-lg-6 my-auto">
+      <img class="img-fluid" src="{% static 'images/ai.jpg' %}" alt="Artificial Intelligence">
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid bg-dark text-white p-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+      <h2 class="text-white mb-4">Why Choose Us?</h2>
+      <p class="lead mb-5">Our cutting-edge data solutions and services are tailored to your business needs and goals. With our expertise and experience, we help you make sense of your data and transform it into actionable insights.</p>
+      <p>
+        <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg">Get Started</a>
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
