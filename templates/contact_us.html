@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Us{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+
+<section class="container-fluid bg-dark text-white p-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+      <h2 class="text-white mb-4">Contact Us</h2>
+      <p class="lead mb-5">We'd love to hear from you. You can reach us by phone or email, or send us a message using the chat bot below.</p>
+      <div class="row">
+        <div class="col-lg-6 mb-5">
+          <p class="lead">Phone: 236-562-4725</p>
+        </div>
+        <div class="col-lg-6 mb-5">
+          <p class="lead">Email: jared.reis@gmail.com</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="chatbot-container">
+            <div id="chatbot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+
+<script>
+  const chatbot = document.querySelector('#chatbot');
+
+  function sendMessage(message) {
+    // Call the Chat GPT API endpoint to get a response
+    fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer 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' // Replace with your own API key
+      },
+      body: JSON.stringify({
+        prompt: message,
+        max_tokens: 60,
+        temperature: 0.7
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const botResponse = data.choices[0].text;
+      const chatbotMessage = document.createElement('div');
+      chatbotMessage.classList.add('chatbot-message');
+      chatbotMessage.innerHTML = botResponse;
+      chatbot.appendChild(chatbotMessage);
+    })
+    .catch(error => console.error(error));
+  }
+
+  chatbot.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+      const userMessage = event.target.value;
+      const userMessageElement = document.createElement('div');
+      userMessageElement.classList.add('user-message');
+      userMessageElement.innerHTML = userMessage;
+      chatbot.appendChild(userMessageElement);
+      event.target.value = '';
+
+      sendMessage(userMessage);
+    }
+  });
+</script>
+{% endblock %}

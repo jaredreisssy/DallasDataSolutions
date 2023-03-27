@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Home{% endblock %}
+
+{% block css %}
+{% endblock %}
+
 {% block content %}
+
 <section class="jumbotron bg-dark text-white">
   <div class="container">
     <h1 class="display-4">Welcome to Dallas Data Solutions</h1>
@@ -9,7 +15,7 @@
     <hr class="my-4">
     <p class="lead">We provide advanced data solutions that empower your business to make data-driven decisions and gain a competitive edge.</p>
     <p class="text-center mt-4">
-      <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg">Get Started</a>
+      <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg">Log in or Sign up</a>
     </p>
   </div>
 </section>
@@ -41,9 +47,10 @@
       <h2 class="text-white mb-4">Why Choose Us?</h2>
       <p class="lead mb-5">Our cutting-edge data solutions and services are tailored to your business needs and goals. With our expertise and experience, we help you make sense of your data and transform it into actionable insights.</p>
       <p>
-        <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg">Get Started</a>
+        <a href="{% url 'contact_us' %}" class="btn btn-primary btn-lg">Contact Us</a>
       </p>
     </div>
   </div>
 </section>
+
 {% endblock %}
