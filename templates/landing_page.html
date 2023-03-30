@@ -4,49 +4,65 @@
 {% block title %}Home{% endblock %}
 
 {% block css %}
+<style>
+  section.jumbotron {
+    background-image: url('https://dallasdatasolutions.s3.amazonaws.com/Images/Jumbotron.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  section.jumbotron h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    color: white;
+    margin: 0;
+  }
+
+  section.jumbotron p {
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    color: white;
+    margin: 0;
+  }
+</style>
 {% endblock %}
 
 {% block content %}
-
-<section class="jumbotron bg-dark text-white">
+<section class="jumbotron">
   <div class="container">
-    <h1 class="display-4">Welcome to Dallas Data Solutions</h1>
-    <p class="lead">Revolutionizing Data Management and Analytics for Businesses</p>
-    <hr class="my-4">
-    <p class="lead">We provide advanced data solutions that empower your business to make data-driven decisions and gain a competitive edge.</p>
-    <p class="text-center mt-4">
-      <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg">Log in or Sign up</a>
-    </p>
+    <h1>Welcome to Dallas Data Solutions</h1>
+    <p>Revolutionizing Data Management and Analytics for Businesses</p>
+    <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg mt-4">Log in or Sign up</a>
   </div>
 </section>
-<section class="container-fluid mt-5 mb-5">
-  <div class="row">
-    <div class="col-lg-6 order-lg-2 mb-5">
-      <img class="img-fluid" src="https://dallasdatasolutions.s3.amazonaws.com/Images/Data+Science.png" alt="Data Science">
-    </div>
-    <div class="col-lg-6 order-lg-1 my-auto">
-      <h2 class="text-white mb-4">Expert Data Science Solutions for Your Business</h2>
-      <p class="lead mb-5">Our team of data experts provides end-to-end solutions for your data management and analytics needs. We help you capture, store, process, and analyze your data to uncover insights and drive business growth.</p>
-    </div>
-  </div>
+
+<section class="container mt-5 mb-5">
   <div class="row">
     <div class="col-lg-6 mb-5">
-      <h2 class="text-white mb-4">Advanced Analytics and AI Services</h2>
-      <p class="lead mb-5">Our analytics and AI services help you harness the power of data to gain a competitive advantage. We offer predictive modeling, machine learning, and deep learning services to help you make better decisions and optimize your business processes.</p>
+      <h2>Expert Data Science Solutions for Your Business</h2>
+      <p>Our team of data experts provides end-to-end solutions for your data management and analytics needs. We help you capture, store, process, and analyze your data to uncover insights and drive business growth.</p>
+      <img src="https://dallasdatasolutions.s3.amazonaws.com/Images/Data+Science.png" alt="Data Science" class="img-fluid">
     </div>
-    <div class="col-lg-6 my-auto">
-      <img class="img-fluid" src="https://dallasdatasolutions.s3.amazonaws.com/Images/AI2.png" alt="Artificial Intelligence">
+    <div class="col-lg-6 mb-5">
+      <h2>Advanced Analytics and AI Services</h2>
+      <p>Our analytics and AI services help you harness the power of data to gain a competitive advantage. We offer predictive modeling, machine learning, and deep learning services to help you make better decisions and optimize your business processes.</p>
+      <img src="https://dallasdatasolutions.s3.amazonaws.com/Images/AI3.png" alt="AI" class="img-fluid">
     </div>
   </div>
 </section>
+
 <section class="container-fluid bg-dark text-white p-5" style="background: url('https://dallasdatasolutions.s3.amazonaws.com/Images/Map.png') no-repeat center center fixed; background-size: cover; opacity: 0.8;">
   <div class="row">
     <div class="col-lg-8 mx-auto text-center">
-      <h2 class="text-white mb-4">Why Choose Us?</h2>
-      <p class="lead mb-5">Our cutting-edge data solutions and services are tailored to your business needs and goals. With our expertise and experience, we help you make sense of your data and transform it into actionable insights.</p>
-      <p>
-        <a href="/contact-us/" class="btn btn-primary btn-lg">Contact Us</a>
-      </p>
+      <h2>Why Choose Us?</h2>
+      <p>Our cutting-edge data solutions and services are tailored to your business needs and goals. With our expertise and experience, we help you make sense of your data and transform it into actionable insights.</p>
+      <a href="{% url 'contact_us' %}" class="btn btn-primary btn-lg mt-4">Contact Us</a>
     </div>
   </div>
 </section>
