@@ -12,7 +12,7 @@ def google_login(request):
         id_token_value = request.POST.get('id_token')
         try:
             # Verify the ID token using the Google Auth Library
-            audience = 'your-google-client-id'
+            audience = 'MTG'
             id_info = id_token.verify_oauth2_token(id_token_value, requests.Request(), audience)
 
             # If the ID token is valid, log the user in
