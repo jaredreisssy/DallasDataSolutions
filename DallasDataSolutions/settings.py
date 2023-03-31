@@ -16,6 +16,7 @@ from transformers import pipeline
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages'
+    'storages',
+    # local apps
+    'base_app',
 ]
 
 MIDDLEWARE = [
@@ -142,5 +145,3 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your_email_address'
 EMAIL_HOST_PASSWORD = 'your_email_password'
 
-# Chatbot settings
-chatbot = pipeline('conversational')

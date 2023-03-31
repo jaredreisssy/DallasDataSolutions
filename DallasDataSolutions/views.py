@@ -53,10 +53,3 @@ def contact_us(request):
         return render(request, 'contact_us.html')
 
 
-def chat_bot(request):
-    if request.method == 'POST':
-        user_input = request.POST.get('user_input')
-        chatbot_response = chatbot(user_input)[0]['generated_text']
-        return render(request, 'chat_bot.html', {'chatbot_response': chatbot_response})
-    else:
-        return render(request, 'chat_bot.html')

@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from base_app.views import query_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.landing_page, name='landing_page'),
     path('google-login/', views.google_login, name='google_login'),
     path('contact-us/', views.contact_us, name='contact_us'),
+    path('chat-bot/', query_view, name='query'),
 ]
