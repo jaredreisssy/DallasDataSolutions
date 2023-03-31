@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.landing_page, name='landing_page'),
     path('google-login/', views.google_login, name='google_login'),
     path('contact-us/', views.contact_us, name='contact_us'),
+    path('chat-bot/', views.chat_bot, name='chat_bot'),
 ]

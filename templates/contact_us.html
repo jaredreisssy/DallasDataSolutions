@@ -5,54 +5,76 @@
 
 {% block css %}
 
-  <style>
-    .container-fluid {
-      padding: 50px;
-    }
-    h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-    }
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .lead {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-    #map {
-      height: 500px;
-    }
-  </style>
+<style>
+  .container-fluid {
+    padding: 50px;
+  }
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .lead {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .map-container {
+    height: 60vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+
 {% endblock %}
 
 {% block content %}
 
-  <section class="container-fluid bg-light p-5">
-    <div class="row">
-      <div class="col-lg-8 mx-auto text-center">
-        <h2>Contact Us</h2>
-        <p>We'd love to hear from you. You can reach us by phone or email.</p>
-        <div class="row">
-          <div class="col-lg-6 mb-5">
-            <p class="lead">Phone: 236-562-4725</p>
-          </div>
-          <div class="col-lg-6 mb-5">
-            <p class="lead">Email: jared.reis@gmail.com</p>
-          </div>
+<section class="container-fluid bg-light p-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto text-center">
+      <h2>Contact Us</h2>
+      <p>We'd love to hear from you. You can reach us by phone or email.</p>
+      <div class="row">
+        <div class="col-lg-6 mb-5">
+          <p class="lead">Phone: 236-562-4725</p>
+        </div>
+        <div class="col-lg-6 mb-5">
+          <p class="lead">Email: jared.reis@gmail.com</p>
         </div>
       </div>
+      <p>Fill out the form below to get in touch with us.</p>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Get in Touch</button>
+      </form>
+      {% if chat_bot %}
+      <p>Or, you can chat with our chat bot:</p>
+      <a href="{% url 'chat_bot' %}" class="btn btn-secondary">Chat Bot</a>
+      {% endif %}
     </div>
-  </section>
-  <section>
-    <div id="map">
-      <iframe src="https://storage.googleapis.com/maps-solutions-z64onq3u8r/locator-plus/ldpf/locator-plus.html"
-        width="100%" height="100%"
-        style="border:0;"
-        loading="lazy">
-      </iframe>
-    </div>
-  </section>
+  </div>
+</section>
+
+<section class="map-container">
+  <div id="map">
+    <iframe src="https://storage.googleapis.com/maps-solutions-z64onq3u8r/locator-plus/ldpf/locator-plus.html"
+      width="50%" loading="lazy">
+    </iframe>
+  </div>
+</section>
+
 {% endblock %}
