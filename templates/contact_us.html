@@ -1,77 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}Contact Us{% endblock %}
 
 {% block css %}
+
+  <style>
+    .container-fluid {
+      padding: 50px;
+    }
+    h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .lead {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    #map {
+      height: 500px;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
 
-<section class="container-fluid bg-dark text-white p-5">
-  <div class="row">
-    <div class="col-lg-8 mx-auto text-center">
-      <h2 class="text-white mb-4">Contact Us</h2>
-      <p class="lead mb-5">We'd love to hear from you. You can reach us by phone or email, or send us a message using the chat bot below.</p>
-      <div class="row">
-        <div class="col-lg-6 mb-5">
-          <p class="lead">Phone: 236-562-4725</p>
-        </div>
-        <div class="col-lg-6 mb-5">
-          <p class="lead">Email: jared.reis@gmail.com</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <div class="chatbot-container">
-            <div id="chatbot"></div>
+  <section class="container-fluid bg-light p-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you. You can reach us by phone or email.</p>
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <p class="lead">Phone: 236-562-4725</p>
+          </div>
+          <div class="col-lg-6 mb-5">
+            <p class="lead">Email: jared.reis@gmail.com</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-{% endblock %}
-{% block scripts %}
-
-<script>
-  const chatbot = document.querySelector('#chatbot');
-
-  function sendMessage(message) {
-    // Call the Chat GPT API endpoint to get a response
-    fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer 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' // Replace with your own API key
-      },
-      body: JSON.stringify({
-        prompt: message,
-        max_tokens: 60,
-        temperature: 0.7
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      const botResponse = data.choices[0].text;
-      const chatbotMessage = document.createElement('div');
-      chatbotMessage.classList.add('chatbot-message');
-      chatbotMessage.innerHTML = botResponse;
-      chatbot.appendChild(chatbotMessage);
-    })
-    .catch(error => console.error(error));
-  }
-
-  chatbot.addEventListener('keydown', event => {
-    if (event.key === 'Enter') {
-      const userMessage = event.target.value;
-      const userMessageElement = document.createElement('div');
-      userMessageElement.classList.add('user-message');
-      userMessageElement.innerHTML = userMessage;
-      chatbot.appendChild(userMessageElement);
-      event.target.value = '';
-
-      sendMessage(userMessage);
-    }
-  });
-</script>
+  </section>
+  <section>
+    <div id="map">
+      <iframe src="https://storage.googleapis.com/maps-solutions-z64onq3u8r/locator-plus/ldpf/locator-plus.html"
+        width="100%" height="100%"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
 {% endblock %}

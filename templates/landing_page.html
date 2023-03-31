@@ -4,65 +4,119 @@
 {% block title %}Home{% endblock %}
 
 {% block css %}
-<style>
-  section.jumbotron {
-    background-image: url('https://dallasdatasolutions.s3.amazonaws.com/Images/Jumbotron.jpg');
-    background-size: cover;
-    background-position: center center;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  section.jumbotron h1 {
-    font-size: 4rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    color: white;
-    margin: 0;
-  }
-
-  section.jumbotron p {
-    font-size: 2rem;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    color: white;
-    margin: 0;
-  }
-</style>
+  <style>
+    .jumbotron {
+      background-image: url('{% static 'images/jumbotron.jpg' %}');
+      background-size: cover;
+      background-position: center center;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .jumbotron h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      color: white;
+      margin: 0;
+    }
+    .jumbotron p {
+      font-size: 2rem;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      color: white;
+      margin: 0;
+    }
+    h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .lead {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .centered-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .data-science-img {
+      margin-top: 4rem;
+    }
+    .ai-img {
+      margin-top: 2rem;
+    }
+    .why-choose-us {
+      background-image: url('{% static 'images/map.png' %}');
+      background-size: cover;
+      background-position: center top;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .why-choose-us h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: white;
+    }
+    .why-choose-us p {
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0069d9;
+      border-color: #0062cc;
+    }
+    .btn-primary:active {
+      background-color: #0062cc;
+      border-color: #005cbf;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
-<section class="jumbotron">
-  <div class="container">
-    <h1>Welcome to Dallas Data Solutions</h1>
-    <p>Revolutionizing Data Management and Analytics for Businesses</p>
-    <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg mt-4">Log in or Sign up</a>
-  </div>
-</section>
-
-<section class="container mt-5 mb-5">
-  <div class="row">
-    <div class="col-lg-6 mb-5">
-      <h2>Expert Data Science Solutions for Your Business</h2>
-      <p>Our team of data experts provides end-to-end solutions for your data management and analytics needs. We help you capture, store, process, and analyze your data to uncover insights and drive business growth.</p>
-      <img src="https://dallasdatasolutions.s3.amazonaws.com/Images/Data+Science.png" alt="Data Science" class="img-fluid">
+  <section class="jumbotron">
+    <div class="container text-center">
+      <h1>Welcome to Dallas Data Solutions</h1>
+      <p>Revolutionizing Data Management and Analytics for Businesses</p>
+      <a href="{% url 'google_login' %}" class="btn btn-primary btn-lg mt-4">Log in or Sign up</a>
     </div>
-    <div class="col-lg-6 mb-5">
-      <h2>Advanced Analytics and AI Services</h2>
-      <p>Our analytics and AI services help you harness the power of data to gain a competitive advantage. We offer predictive modeling, machine learning, and deep learning services to help you make better decisions and optimize your business processes.</p>
-      <img src="https://dallasdatasolutions.s3.amazonaws.com/Images/AI3.png" alt="AI" class="img-fluid">
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="container-fluid bg-dark text-white p-5" style="background: url('https://dallasdatasolutions.s3.amazonaws.com/Images/Map.png') no-repeat center center fixed; background-size: cover; opacity: 0.8;">
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-6 mb-5">
+    <h2>Expert Data Science Solutions for Your Business</h2>
+    <p>Our team of data experts provides end-to-end solutions for your data management and analytics needs. We help you capture, store, process, and analyze your data to uncover insights and drive business growth.</p>
+    <img src="https://dallasdatasolutions.s3.amazonaws.com/Images/Data+Science.png" alt="Data Science" class="img-fluid centered-img data-science-img">
+  </div>
+  <div class="col-lg-6 mb-5">
+    <h2>Advanced Analytics and AI Services</h2>
+    <p>Our analytics and AI services help you harness the power of data to gain a competitive advantage. We offer predictive modeling, machine learning, and deep learning services to help you make better decisions and optimize your business processes.</p>
+    <img src="https://dallasdatasolutions.s3.amazonaws.com/Images/AI3.png" alt="AI" class="img-fluid centered-img ai-img">
+  </div>
+</div>
+
+
+<section class="container-fluid bg-dark p-0" style="background: url('https://dallasdatasolutions.s3.amazonaws.com/Images/Map.png') no-repeat center top fixed; background-size: cover; height: 500px; display: flex; justify-content: center; align-items: center;">
   <div class="row">
-    <div class="col-lg-8 mx-auto text-center">
+    <div class="col-lg-8 mx-auto text-center text-dark">
       <h2>Why Choose Us?</h2>
       <p>Our cutting-edge data solutions and services are tailored to your business needs and goals. With our expertise and experience, we help you make sense of your data and transform it into actionable insights.</p>
-      <a href="{% url 'contact_us' %}" class="btn btn-primary btn-lg mt-4">Contact Us</a>
+      <a href="{% url 'contact_us' %}" class="btn btn-primary btn-lg mt-4 fw-bold">Contact Us</a>
     </div>
   </div>
 </section>

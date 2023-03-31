@@ -2,49 +2,75 @@
 
 {% block title %}Google Login{% endblock %}
 
+{% block css %}
+  <style>
+    .container-fluid {
+      padding: 50px;
+    }
+    h4 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    #g-signin2 {
+      margin: 0 auto;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-6">
+  <section class="container-fluid">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
         <div class="card">
-            <div class="card-header">
-                <h4>Google Login</h4>
-            </div>
-            <div class="card-body">
-                <div id="g-signin2"></div>
-                <form id="google-login-form" method="post" style="display:none">
-                    {% csrf_token %}
-                    <input type="hidden" name="access_token" id="google-access-token">
-                </form>
-            </div>
+          <div class="card-header">
+            <h4>Google Login</h4>
+          </div>
+          <div class="card-body">
+            <div id="g-signin2"></div>
+            <form id="google-login-form" method="post" style="display:none">
+              {% csrf_token %}
+              <input type="hidden" name="access_token" id="google-access-token">
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </section>
 {% endblock %}
 
 {% block scripts %}
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
     function onSignIn(googleUser) {
-        var id_token = googleUser.getAuthResponse().id_token;
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/google-login');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                window.location.href = '/';
-            }
-        };
-        xhr.send('id_token=' + id_token);
+      var id_token = googleUser.getAuthResponse().id_token;
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/google-login');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          window.location.href = '/';
+        }
+      };
+      xhr.send('id_token=' + id_token);
     }
 
     gapi.signin2.render('g-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSignIn,
-        'onfailure': function() { console.log('Google Sign-In failed'); }
+      'scope': 'profile email',
+      'width': 240,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark',
+      'onsuccess': onSignIn,
+      'onfailure': function() {
+        console.log('Google Sign-In failed');
+      }
     });
-</script>
+  </script>
 {% endblock %}
