@@ -34,7 +34,7 @@
                 // Clear the prompt
                 $('#prompt').val('');
                 $.ajax({
-                    url: '/',
+                    url: '{% url 'query' %}',
                     type: 'POST',
                     data: {prompt: prompt},
                     dataType: 'json',
@@ -48,8 +48,7 @@
 </head>
 <body>
     <div class="container p-3">
-        <h3>ChatGPT Clone</h3>
-        <a href="https://github.com/victordonoso/openai" class="link-info">Project on Github</a>
+        <h3>Chat with Our AI</h3>
         <div class="mb-3">
             <form method="post">
                 {% csrf_token %}
