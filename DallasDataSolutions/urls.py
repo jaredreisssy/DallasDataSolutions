@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from .views import query_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +27,4 @@ urlpatterns = [
     path('contact-us/', views.contact_us, name='contact_us'),
     path('chat-bot/', query_view, name='query'),
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
